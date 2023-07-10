@@ -18,9 +18,16 @@
 // title[0].style.color = 'green';
 
 
- var items = document.getElementsByClassName('list-group-item');
- items[2].style.backgroundColor = 'green';
+//  var items = document.getElementsByClassName('list-group-item');
+//  items[2].style.backgroundColor = 'green';
 
- for(var i=0; i<items.length; i++){
-    items[i].style.fontWeight = 'bold';
- }
+//  for(var i=0; i<items.length; i++){
+//     items[i].style.fontWeight = 'bold';
+//  }
+
+// create a element
+const li = document.createElement("li");
+li.innerHTML = 'Item 5';
+console.log(li);
+var ul = document.getElementById('items');
+ul.appendChild(li);
