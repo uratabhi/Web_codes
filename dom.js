@@ -26,8 +26,15 @@
 //  }
 
 // create a element
-const li = document.createElement("li");
-li.innerHTML = 'Item 5';
-console.log(li);
-var ul = document.getElementById('items');
-ul.appendChild(li);
+// const li = document.createElement("li");
+// li.innerHTML = 'Item 5';
+// console.log(li);
+// var ul = document.getElementById('items');
+// ul.appendChild(li);
+
+var seconditem = document.querySelector('.list-group-item:nth-child(2)');
+seconditem.style.backgroundColor = 'green';
+
+var thirditem = document.querySelector('.list-group-item:nth-child(3)');
+thirditem.style.display = 'none';
+
