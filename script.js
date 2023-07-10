@@ -17,7 +17,12 @@ function onsubmit(e){
       } 
       else{
          var ptr = localStorage.length;
-         localStorage.setItem(`userdetails[${ptr}]`,`${nameInput.value}, ${emailInput.value}`);
+         let myobj = {
+            username :  nameInput.value,
+            useremail : emailInput.value,
+         };
+         let myobj_serilized = JSON.stringify(myobj);
+         localStorage.setItem(`myobj${ptr}`, myobj_serilized);
       }
       
 }
