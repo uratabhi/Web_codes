@@ -85,6 +85,19 @@
       border-radius: 5px;
       margin: 5px 0;
   }
+  .edit{
+     display: inline;
+      width: 20%;
+      padding: 10px 15px;
+      border: 0;
+      background: #21aa1c;
+      color: #fff;
+      border-radius: 5px;
+      margin: 5px 0;
+  }
+   .edit:hover{
+    background-color: #28ec22;
+   }
    .delete:hover{
       background-color: orangered;
    }
