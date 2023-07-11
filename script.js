@@ -1,32 +1,36 @@
-const myForm = document.querySelector('#my-form');
-const nameInput = document.querySelector('#name');
-const emailInput = document.querySelector('#email');
-const phoneInput = document.querySelector('#phone');
-const msg = document.querySelector('.msg');
-const userList = document.querySelector('#users');
+var form = document.getElementById('my-form');
+form.addEventListener('submit', saveToLocalStorage);
 
-myForm.addEventListener('submit', onsubmit);
-function onsubmit(e){
-    e.preventDefault();
-    if(nameInput.value === '' || emailInput.value === '' || phoneInput.value==='') {
-        // alert('Please enter all fields');
-        msg.classList.add('error');
-        msg.innerHTML = 'Please enter all fields';
-    
-        // Remove error after 3 seconds
-        setTimeout(() => msg.remove(), 3000);
-      } 
-      else{
-        const li = document.createElement('li');
-        li.appendChild(document.createTextNode(`Username=${nameInput.value} Email= ${emailInput.value} Phone= ${phoneInput.value}`));
-        userList.appendChild(li);
-         let myobj = {
-            username :  nameInput.value,
-            useremail : emailInput.value,
-            userphone : phoneInput.value,
-         };
-         let myobj_serilized = JSON.stringify(myobj);
-         localStorage.setItem(`${nameInput.value}`, myobj_serilized);
-      }
-      
+function saveToLocalStorage(e){
+   e.preventDefault();
+   const name = e.target.userName.value;
+   const email = e.target.emailId.value;
+   const phone = e.target.phoneNumber.value;
+   const obj = {
+     name,
+     email,
+     phone,
+   };
+   localStorage.setItem(obj.email, JSON.stringify(obj));
+   showNewUserOnScreen(obj);
+}
+
+function showNewUserOnScreen(user){
+      const parentNode = document.getElementById('users');
+      const childNode = `<li id=${user.email}>userName=${user.name} <br> userEmail=${user.email} <br> userPhone=${user.phone} 
+      <button class = "delete" onclick=deleteUser('${user.email}')>Delete </button> </li>`
+      parentNode.innerHTML = parentNode.innerHTML+childNode;
+    }
+
+function deleteUser(emailId){
+     localStorage.removeItem(emailId);
+     removeUserFromScreen(emailId);
+}
+
+function removeUserFromScreen(emailId){
+   const parentNode = document.getElementById('users');
+   const childNode = document.getElementById(emailId);
+   if(childNode){
+    parentNode.removeChild(childNode);
+   }
 }
